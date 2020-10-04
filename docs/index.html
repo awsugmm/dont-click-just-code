@@ -60,7 +60,7 @@ count: false
 1. Introduction
 1. What is Terraform?
 1. Nomenclature
-1. Architecture Overview
+1. Terraform Basic
 1. Starting Simple
 1. Running Your First Job
 1. Scaling Things Up
@@ -88,6 +88,70 @@ count: false
 --
 
 * ...so let's learn the basics together! 🙌
+
+---
+
+## How to Provision an AWS Instance
+
+There are a few different ways you could provision a new AWS Instances. Before we start we'll need to gather some basic informations.
+
+- Instance Name
+- Operating System (AMI image)
+- VM Size
+- Geographical Location (Region)
+- Security Groups
+
+---
+
+# Method 1: AWS Console
+
+.center[![:scale 100%](images/aws-console.png)]
+
+---
+
+# Method 1: AWS Protal
+
+.center[![:scale 100%](images/aws-portal.png)]
+
+---
+
+### Method 2: CloudFormation Templates
+
+```json
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create an Amazon EC2 instance running the Amazon Linux AMI."
+
+  "Parameters" : {
+    "KeyName": {
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
+      "Type": "AWS::EC2::KeyPair::KeyName",
+      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
+    },
+
+    "InstanceType" : {
+      "Description" : "WebServer EC2 instance type",
+      "Type" : "String",
+      "Default" : "t2.small",
+      ...
+```
+
+---
+
+### Method 3: Provision with Terraform
+
+```hcl
+resource aws_instance "awsugmm" {
+  ami           = "ami-01ca03df4a6012157"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "WebServer"
+  }
+}
+```
+
+Example Terraform code for building an AWS instance.
 
 ---
 
@@ -438,6 +502,51 @@ Runs a plan if you approve, then it applies the changes.
 Oppposite of Terraform Apply. If you approve, infra will destroy.
 
 ---
+
+# Versioning Operators
+
+- = (or no operator): exact version equality
+- !=: version not equal
+- \>, >=, <, <=: version comparison
+- ~>: pessimistic constraint, constraining both the oldest and newest
+version allowed. ~> 0.9 is equivalent to >= 0.9, < 1.0, and ~> 0.8.4
+is equivalent to >= 0.8.4, < 0.9
+
+---
+
+# Terraform Module
+
+* A module is a container for multiple resources that are used together.
+* It is simply a configuration that defines inputs, resources, and outputs.
+* Terraform modules can be retrieve using `terraform get` or `terraform init`.
+* [Terraform AWS Modules](https://registry.terraform.io/namespaces/terraform-aws-modules)
+* [More information about modules](https://www.terraform.io/docs/configuration/modules.html)
+
+---
+
+# Calling A Module
+
+```hcl
+# Module from local machine
+module "servers" {
+  source = "./app-cluster"
+
+  servers = 5
+}
+```
+
+```hcl
+# Module from Terraform Registry
+module "sg" {
+  source  = "DTherHtun/sg/aws"
+  version = "0.2.1"
+  vpc_id  = vpc-63754d04
+  name    = "all_allow"
+}
+```
+
+---
+
 class: center, middle
 
 # DEMO: Updating our application
