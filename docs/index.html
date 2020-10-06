@@ -56,10 +56,17 @@ count: false
 ---
 
 # The Slide Deck
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 Follow along on your own computer at this link:
-
-https://git.io/JUFeP
+<br>
+<br>
+https://awsugmm.org/dont-click-just-code/
 
 ---
 
@@ -103,10 +110,11 @@ https://git.io/JUFeP
 
 There are a few different ways you could provision a new AWS Instances. Before we start we'll need to gather some basic informations.
 
-- Instance Name
-- Operating System (AMI image)
-- VM Size
 - Geographical Location (Region)
+- VPC/Subnet
+- Operating System (AMI image)
+- Instance Size/Type
+- Instance Name
 - Security Groups
 
 ---
@@ -416,7 +424,7 @@ data "aws_ami_ids" "ubuntu" {
 
 ---
 
-# Terraform Cli
+# Terraform CLI
 
 - Terraform commands are either typed in manually or run automatically from a script.
 - The commands are the same whether you are on Linux or Windows or MacOS.
@@ -513,10 +521,10 @@ Oppposite of Terraform Apply. If you approve, infra will destroy.
 
 # Versioning Operators
 
-- = (or no operator): exact version equality
+- = (or no operator) - exact version equality
 - !=: version not equal
-- \>, >=, <, <=: version comparison
-- ~>: pessimistic constraint, constraining both the oldest and newest
+- \>, >=, <, <= - version comparison
+- ~> - pessimistic constraint, constraining both the oldest and newest
 version allowed. ~> 0.9 is equivalent to >= 0.9, < 1.0, and ~> 0.8.4
 is equivalent to >= 0.8.4, < 0.9
 
@@ -528,7 +536,8 @@ is equivalent to >= 0.8.4, < 0.9
 * It is simply a configuration that defines inputs, resources, and outputs.
 * Terraform modules can be retrieve using `terraform get` or `terraform init`.
 * [Terraform AWS Modules](https://registry.terraform.io/namespaces/terraform-aws-modules)
-* [More information about modules](https://www.terraform.io/docs/configuration/modules.html)
+
+[More information about modules](https://www.terraform.io/docs/configuration/modules.html)
 
 ---
 
@@ -609,7 +618,7 @@ class: center, middle
 
 --
 
-* Deploy a million Infrastructure resource:wq!
+* Deploy a million Infrastructure resource
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
