@@ -65,8 +65,12 @@ count: false
 <br>
 Follow along on your own computer at this link:
 <br>
-<br>
 https://awsugmm.org/dont-click-just-code/
+<br>
+<br>
+Demo For Github repo:
+<br>
+https://git.io/JUp6d
 
 ---
 
@@ -333,7 +337,7 @@ terraform {
 # Nomenclature
 
 * **locals** - _A set of related local values can be declared together in a single locals block_
-* _Once a local value is declared, you can reference it in expressions as `local.<name>`._
+* _Once a local value is declared, you can reference it in expressions as <span style="color:blue;">`local.<name>`</span>._
 
 ```hcl
 locals {
@@ -446,7 +450,7 @@ terraform destrory
 
 .center[![:scale 90%](images/tf-help.png)]
 
-`terraform <subcommand> help` to view help on a particular subcommand.
+<span style="color:blue;">`terraform <subcommand> help`</span> to view help on a particular subcommand.
 
 ---
 
@@ -490,7 +494,7 @@ The comment ends with this symbol: */
 
 .center[![:scale 65%](images/tf-init.png)]
 
-Fetches any required providers and modules and stores them in the `.terraform` directory.
+Fetches any required providers and modules and stores them in the <span style="color:blue;">`.terraform`</span> directory.
 
 ---
 
@@ -498,7 +502,7 @@ Fetches any required providers and modules and stores them in the `.terraform` d
 
 .center[![:scale 60%](images/tf-plan.png)]
 
-Preview your changes with `terraform plan` before you apply them.
+Preview your changes with <span style="color:blue;">`terraform plan`</span> before you apply them.
 
 ---
 
@@ -521,12 +525,12 @@ Oppposite of Terraform Apply. If you approve, infra will destroy.
 
 # Versioning Operators
 
-- = (or no operator) - exact version equality
-- !=: version not equal
-- \>, >=, <, <= - version comparison
-- ~> - pessimistic constraint, constraining both the oldest and newest
-version allowed. ~> 0.9 is equivalent to >= 0.9, < 1.0, and ~> 0.8.4
-is equivalent to >= 0.8.4, < 0.9
+- <span style="color:blue;">`= (or no operator)`</span> - exact version equality
+- <span style="color:blue;">`!=`</span> - version not equal
+- <span style="color:blue;">`>, >=, <, <=`</span> - version comparison
+- <span style="color:blue;">`~>`</span> - pessimistic constraint, constraining both the oldest and newest
+version allowed. <span style="color:blue;">`~> 0.9`</span> is equivalent to <span style="color:blue;">`>= 0.9`, `< 1.0`</span>, and <span style="color:blue;">`~> 0.8.4`</span>
+is equivalent to <span style="color:blue;">`>= 0.8.4, < 0.9`</span>.
 
 ---
 
@@ -534,7 +538,7 @@ is equivalent to >= 0.8.4, < 0.9
 
 * A module is a container for multiple resources that are used together.
 * It is simply a configuration that defines inputs, resources, and outputs.
-* Terraform modules can be retrieve using `terraform get` or `terraform init`.
+* Terraform modules can be retrieve using <span style="color:blue;">`terraform get`</span> or <span style="color:blue;">`terraform init`</span>.
 * [Terraform AWS Modules](https://registry.terraform.io/namespaces/terraform-aws-modules)
 
 [More information about modules](https://www.terraform.io/docs/configuration/modules.html)
@@ -564,9 +568,94 @@ module "sg" {
 
 ---
 
+# Terrafrom Code Organization
+
+Terraform will read any file in your workspace that ends in a <span style="color:blue;">`.tf`</span> extension, but the convention is to have a <span style="color:blue;">`main.tf, variables.tf, and outpus.tf`</span>. You may add more <span style="color:blue;">tf</span> files if you wish.
+
+```hcl
+main.tf
+variables.tf
+outputs.tf
+provider.tf
+```
+
+---
+
+# Terraform Workflow
+<br>
+.center[![:scale 100%](images/tf-seq-wf.png)]
+<br>
+<br>
+.center[![:scale 100%](images/tf-workflow.png)]
+
+---
+
 class: center, middle
 
-# DEMO: Building Infrastructure with Terraform
+## DEMO: Building Infrastructure on AWS using Terraform
+
+---
+class: center, middle
+
+### DEMO: INFRASTRUCTRUE
+
+.center[![:scale 100%](images/demo.png)]
+
+---
+
+.center[![:scale 100%](images/wow.gif)]
+
+---
+
+## Terraform Cloud
+
+Terraform Cloud is a free to use SaaS application that provides the best workflow for writing and building infrastructure as code with Terraform.
+
+.center[![:scale 72%](images/tf-cloud.png)]
+
+---
+
+## Terraform Cloud
+
+--
+
+* State storage and management
+
+--
+
+* Web UI for viewing and approving Terraform runs
+
+--
+
+* Private module registry
+
+--
+
+* Version Control System integration
+
+--
+
+* CLI, API or GUI driven actions 
+
+--
+
+* Notifications for run events
+
+--
+
+* Full HTTP API for automation
+
+---
+## Terraform Cloud
+
+.center[![:scale 100%](images/tf-cloud-overview.png)]
+
+.center[Workflow Overview]
+
+---
+class: center, middle
+
+# DEMO: Terrafrom Cloud
 
 ---
 
@@ -574,27 +663,23 @@ class: center, middle
 
 --
 
-* Download, install and run Nomad
+* Terraform HCL syntax
 
 --
 
-* Run multiple instances of a web application
+* Terraform basic commands
 
 --
 
-* Service discovery and health checking
+* Working with Terrafom on AWS
 
 --
 
-* Load balancing
+* Terraform Modules (How we use terraform aws modules)
 
 --
 
-* Updating our application
-
----
-
-.center[![:scale 100%](images/wow.gif)]
+* Terraform Cloud
 
 ---
 
@@ -614,11 +699,21 @@ class: center, middle
 
 --
 
-* Build a multi-node, multi-region cluster!
+* Build your own Terraform Modules!
 
 --
 
 * Deploy a million Infrastructure resource
+
+--
+
+* Take Terraform Associate Exam
+
+---
+class: center, middle
+
+# Q & A
+# Thanks
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
